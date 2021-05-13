@@ -6,10 +6,10 @@ module.exports = [
       code: 0,
       msg: '',
       data: {
-        'list|20': [
+        'list|55': [
           {
             tagId: '@id',
-            tagName: '@ctitle(2,6)',
+            tagName: '@word(3,9)',
             tagCode: '@word(6)'
           }
         ]
