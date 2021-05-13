@@ -1,5 +1,4 @@
 import axios from 'axios';
-// const SERVER_URL = 'http://127.0.0.1:6789' 'http://101.133.162.173:3333'
 
 const isDev = process.env.NODE_ENV === 'development';
 
