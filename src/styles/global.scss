@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
+body {
+  letter-spacing: 1px;
+
+  font: {
+    size: 16px !important;
+    family: 'Varela Round', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica,
+      Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  }
+
+  p {
+    margin-bottom: 0;
+  }
+
+  a {
+    text-decoration: none;
+    color: #2d8cf0;
+  }
+
+  ul {
+    padding-left: 0;
+    margin-bottom: 0;
+  }
+
+  li {
+    list-style: none;
+  }
+}
+
+/* 浏览器滚动条 */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-corner,
+::-webkit-scrollbar-track {
+  background-color: #e2e2e2;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 2px;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-button:vertical {
+  display: none;
+}
+
+::-webkit-scrollbar-thumb:vertical:hover {
+  background-color: rgba(0, 0, 0, 0.35);
+}
+
+::-webkit-scrollbar-thumb:vertical:active {
+  background-color: rgba(0, 0, 0, 0.38);
+}
+
+// 页脚，页头
+.outer-container {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+// 内容
+.main-container {
+  position: relative;
+  max-width: 1150px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.box-card {
+  margin: 40px 0;
+}
+
+.text {
+  color: #666;
+}
+
+.no-ani,
+.hidden {
+  visibility: hidden;
+}
+
+.g-row {
+  position: relative;
+  width: 100%;
+  zoom: 1;
+  display: block;
+
+  &::after {
+    content: '';
+    display: block;
+    clear: left;
+  }
+
+  .g-col {
+    display: block;
+    float: left;
+  }
+
+  .g-col-6 {
+    width: 25%;
+  }
+
+  .g-col-18 {
+    width: 75%;
+  }
+}
+
+.g-header {
+  width: 100%;
+  height: 120px;
+  line-height: 120px;
+  // background: url('/static/images/header.jpg');
+  // color: #333;
+  // text-align: center;
+  margin-bottom: 10px;
+}
+
+@media print {
+  .g-header,
+  .g-footer,
+  .g-message,
+  .fixed-tool {
+    display: none;
+  }
+
+  .print-hidden {
+    display: none !important;
+  }
+
+  .print-col-24 {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 970px) {
+  .outer-container {
+    height: auto;
+    line-height: 0;
+  }
+  .main-container {
+    padding: 10px 22px;
+  }
+
+  .g-header {
+    height: auto;
+  }
+
+  .m-col-hidden {
+    display: none !important;
+  }
+
+  .m-col-24 {
+    width: 100% !important;
+  }
+}
+
+// 全局加载样式覆盖
+#__next,
+.global-loading {
+  width: 100%;
+  height: 100%;
+}
+
+.global-loading {
+  div {
+    .ant-spin {
+      max-height: 100% !important;
+    }
+  }
+  .ant-spin-container {
+    height: 100%;
+  }
+}
+
+.dark {
+  .ant-tag a:hover {
+    color: inherit;
+  }
+}

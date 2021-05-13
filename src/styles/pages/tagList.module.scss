@@ -1,0 +1,30 @@
+.line-item {
+  margin: 10px 40px;
+  font-size: 14px;
+
+  h2 {
+    top: -5px;
+  }
+
+  ul {
+    padding: 10px 25px;
+    li {
+      padding: 10px;
+      list-style: lower-greek;
+      a {
+        color: #63a35c;
+        letter-spacing: 1px;
+        transition: color 0.5s;
+        -webkit-transition: color 0.5s;
+      }
+      span {
+        color: #988c8c;
+        float: right;
+      }
+    }
+  }
+}
+
+.no-Ani {
+  visibility: hidden;
+}

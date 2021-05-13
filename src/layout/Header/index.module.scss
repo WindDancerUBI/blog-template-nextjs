@@ -1,0 +1,53 @@
+.pc {
+  display: block;
+  padding: 0 10px;
+
+  .pc-title {
+    font-size: 18px;
+    position: absolute;
+    right: 10px;
+    top: 0;
+    color: #525252;
+  }
+}
+
+:global(.dark) {
+  .pc {
+    .pc-title {
+      color: #fff;
+    }
+  }
+}
+
+.m {
+  display: none;
+}
+
+@media (max-width: 970px) {
+  .pc {
+    display: none;
+  }
+
+  .m {
+    position: relative;
+    display: block;
+    right: 18px;
+    font-size: 2rem;
+
+    .m-title {
+      font-size: 26px;
+      line-height: 70px;
+      text-align: center;
+    }
+
+    .m-menu-open {
+      display: flex;
+      align-items: center;
+      position: absolute;
+      right: 10px;
+      top: 0;
+      bottom: 0;
+      font-size: 26px;
+    }
+  }
+}

@@ -1,0 +1,17 @@
+.description {
+  text-indent: 2em;
+  font-size: 14px;
+
+  * {
+    text-indent: initial;
+  }
+}
+
+p.description {
+  line-height: 200%;
+}
+
+.fri-link {
+  padding-right: 8px;
+  text-decoration: underline;
+}

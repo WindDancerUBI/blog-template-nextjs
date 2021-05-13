@@ -1,0 +1,141 @@
+$displayTimeSlow: 2s;
+$displayTimeFast: 0.5s;
+
+// 向左翻页混合器
+@mixin bookLeft {
+  0% {
+    transform: rotateY(90deg);
+  }
+
+  100% {
+    transform: rotateY(0deg);
+  }
+}
+
+@mixin bookRight {
+  0% {
+    transform: rotateY(-90deg);
+  }
+
+  100% {
+    transform: rotateY(0deg);
+  }
+}
+
+@-webkit-keyframes bookLeft {
+  @include bookLeft;
+}
+
+@keyframes bookLeft {
+  @include bookLeft;
+}
+
+@-webkit-keyframes bookRight {
+  @include bookRight;
+}
+
+@keyframes bookRight {
+  @include bookRight;
+}
+
+.myAnimatedSlow {
+  -webkit-animation-duration: $displayTimeSlow;
+  animation-duration: $displayTimeSlow; // 动画播放时间
+}
+
+.myAnimatedFast {
+  -webkit-animation-duration: $displayTimeFast;
+  animation-duration: $displayTimeFast; // 动画播放时间
+}
+
+.bookLeft {
+  -webkit-animation-name: bookLeft;
+  animation-name: bookLeft;
+  transform-style: preserve-3d;
+  transform-origin: right;
+}
+
+.bookRight {
+  -webkit-animation-name: bookRight;
+  animation-name: bookRight;
+  transform-style: preserve-3d;
+  transform-origin: left;
+}
+
+@mixin myZoomIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@mixin myZoomOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes myZoomIn {
+  @include myZoomIn;
+}
+
+@keyframes myZoomIn {
+  @include myZoomIn;
+}
+
+@-webkit-keyframes myZoomOut {
+  @include myZoomOut;
+}
+
+@keyframes myZoomOut {
+  @include myZoomOut;
+}
+
+.myZoomIn {
+  -webkit-animation-name: myZoomIn;
+  animation-name: myZoomIn;
+}
+
+.myZoomOut {
+  -webkit-animation-name: myZoomOut;
+  animation-name: myZoomOut;
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.fadeIn {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+}
+
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}

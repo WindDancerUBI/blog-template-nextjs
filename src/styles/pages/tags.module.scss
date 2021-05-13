@@ -1,0 +1,32 @@
+.tag-link {
+  display: inline-block;
+  margin-bottom: 7px;
+
+  span {
+    cursor: pointer;
+  }
+}
+
+.class-block {
+  &:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+  .class-item {
+    padding: 10px;
+    line-height: 30px;
+    float: left;
+    &:hover {
+      a {
+        text-decoration: underline;
+      }
+    }
+
+    &::after {
+      display: block;
+      content: '';
+      clear: left;
+    }
+  }
+}

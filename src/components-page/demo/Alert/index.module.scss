@@ -1,0 +1,11 @@
+.content {
+  :global {
+    .ant-alert {
+      margin-bottom: 14px;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

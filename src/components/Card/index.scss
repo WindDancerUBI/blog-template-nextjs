@@ -1,0 +1,32 @@
+.replace {
+  padding: 2px;
+
+  .card {
+    border-radius: 4px;
+    background-color: #ffffff;
+    color: #303133;
+
+    .card-title {
+      padding: 15px;
+    }
+    .card-body {
+      padding: 15px;
+    }
+  }
+
+  .card-border {
+    border: 1px solid #dcdfe6;
+  }
+}
+
+.dark {
+  .card {
+    border-radius: 4px;
+    background-color: #000;
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .card-border {
+    border: 1px solid #2c2c2c;
+  }
+}

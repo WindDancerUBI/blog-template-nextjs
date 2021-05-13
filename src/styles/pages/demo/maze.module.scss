@@ -1,0 +1,113 @@
+// 小方格border
+$step-border: 1px solid;
+
+:global {
+  // 障碍
+  .obstacle {
+    background-image: url('/static/images/maze/obstacle.png');
+  }
+
+  // 向左走
+  .go-left {
+    background-image: url('/static/images/maze/left.png');
+  }
+
+  .go-right {
+    background-image: url('/static/images/maze/right.png');
+  }
+
+  .go-up {
+    background-image: url('/static/images/maze/up.png');
+  }
+
+  .go-down {
+    background-image: url('/static/images/maze/down.png');
+  }
+}
+
+.demo-maze {
+  width: 610px;
+  margin: 0 auto;
+}
+
+.maze-header {
+  padding: 18px 0;
+
+  h2 {
+    display: inline-block;
+  }
+}
+
+.maze-attr {
+  margin-bottom: 16px;
+}
+
+.maze-body {
+  width: 100%;
+  height: 600px;
+  padding: 15px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+  border: 1px solid #cfcfcf;
+  display: flex;
+  // 让每一行按纵向排列
+  flex-direction: column;
+
+  .maze-row {
+    // 纵向平均分布
+    flex: 1;
+    // 将自己设置成弹性容器
+    display: flex;
+
+    .maze-step {
+      cursor: pointer;
+      // 水平平均分布
+      flex: 1;
+      // 用div的病
+      display: inline-block;
+      box-sizing: border-box;
+      background: {
+        size: 60%;
+        repeat: no-repeat;
+        position: center center;
+      }
+
+      // 所以小格子都设置左上边框
+      border: {
+        top: $step-border;
+        left: $step-border;
+      }
+
+      // 每行最后一个设置右边框
+      &:last-of-type {
+        border: {
+          right: $step-border;
+        }
+      }
+    }
+
+    // 第一排第一个
+    &:first-of-type {
+      .maze-step:first-of-type {
+        background-image: url('/static/images/maze/start.png');
+      }
+    }
+
+    // 最后一列每个格子都设置下边框
+    &:last-of-type {
+      .maze-step {
+        border-bottom: $step-border;
+
+        &:last-of-type {
+          background-image: url('/static/images/maze/end.png');
+        }
+      }
+    }
+  }
+}
+
+:global(.dark) {
+  .maze-step {
+    background-color: rgba(109, 109, 109, 0.85);
+  }
+}
