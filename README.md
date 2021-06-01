@@ -6,7 +6,7 @@
 
 ## 预览地址
 
-在线预览：[传送门](https://zhoubangfu.com)
+在线预览：[传送门](https://imbf.cc)
 
 ![](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ad7d30bc18cd47d0a2241aaab63b281b~tplv-k3u1fbpfcp-watermark.image)
 

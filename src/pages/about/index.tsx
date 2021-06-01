@@ -45,8 +45,8 @@ const About = (): ReactElement => {
           <p className={styles['description']}>邮箱：zbfcqtl@163.com</p>
           <p className={styles['description']}>
             GitHub：
-            <a href="https://github.com/zhoubangfu" target="_blank">
-              https://github.com/zhoubangfu
+            <a href="https://github.com/imzbf" target="_blank">
+              https://github.com/imzbf
             </a>
           </p>
         </>
