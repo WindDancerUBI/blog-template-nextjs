@@ -1,20 +1,15 @@
-import { ReactElement, useEffect, useMemo } from 'react';
+import { ReactElement, useEffect, useLayoutEffect, useState } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { Button, message, Tooltip } from 'antd';
+import { Button, Tooltip } from 'antd';
 import { PrinterOutlined } from '@ant-design/icons';
 import staticConfig from '@/config';
 import Card from '@cps/Card';
 import { visiteLog } from '@/utils';
 import axios from '@/utils/request';
 import mediumZoom from 'medium-zoom';
-import marked from 'marked';
-import hljs from 'highlight.js';
-import copy from 'copy-to-clipboard';
 import ErrorPage from 'next/error';
 import { loadAnimate } from '@/utils';
-import '@/styles/pages/detail.scss';
-import 'highlight.js/scss/atom-one-dark.scss';
 
 import styles from '@/styles/pages/detail.module.scss';
 
@@ -24,6 +19,9 @@ import { NextApiRequest } from 'next';
 import { useSelector } from 'react-redux';
 import { StoreTypes } from '@/redux/reducer';
 
+import MdEditor from 'md-editor-rt';
+import 'md-editor-rt/lib/style.css';
+
 export interface ArticleProps {
   code: number;
   articleTitle: string;
@@ -32,34 +30,12 @@ export interface ArticleProps {
   articleCode: string;
 }
 
-// 解析MD语法插入
-const headstemp = [];
-
 const ArticleDetail = (props: ArticleProps): ReactElement => {
   // redux对象
   const config = useSelector((state: StoreTypes) => state.config);
 
-  let count = 0;
-  const rendererMD = new marked.Renderer();
-  rendererMD.heading = (text, level) => {
-    headstemp.push({ text, level });
-    count++;
-    return `<h${level} id="heading-${count}"><span class="h-text">${text}</span></h${level}>`;
-  };
-
-  rendererMD.image = (href, _, text) =>
-    `<img data-src="${href}" src="/cos/2020/1211175603.png" alt="${text}" >`;
-
-  marked.setOptions({
-    highlight(code) {
-      return hljs.highlightAuto(code).value;
-    },
-    renderer: rendererMD
-  });
-
-  const html = useMemo(() => {
-    return marked(props.articleContent);
-  }, [props.articleContent]);
+  // 解析MD语法插入
+  const [heads, setHeads] = useState([]);
 
   // 路由打点
   const router = useRouter();
@@ -96,22 +72,16 @@ const ArticleDetail = (props: ArticleProps): ReactElement => {
       background: config.themeName === 'dark' ? '#000' : '#fff'
     });
 
-    document.querySelectorAll('.content pre').forEach((pre: Element) => {
-      const copyButton = document.createElement('span');
-      copyButton.setAttribute('class', 'copy-button print-hidden');
-      copyButton.innerText = '复制代码';
-      copyButton.addEventListener('click', () => {
-        copy(pre.querySelector('code').innerText);
-        message.success('已复制！');
-      });
-      pre.appendChild(copyButton);
-    });
-
-    // document
-    //   .querySelector('.enter-hidden')
-    //   .classList.filter((clas) => clas !== 'enter-hidden')
     const ml: any = document.querySelector('div[lazy-play]');
     ml.style = '';
+  }, []);
+
+  useLayoutEffect(() => {
+    setTimeout(() => {
+      mediumZoom(document.querySelectorAll('.content img'), {
+        background: config.themeName === 'dark' ? '#000' : '#fff'
+      });
+    }, 1000);
   }, []);
 
   return (
@@ -130,7 +100,14 @@ const ArticleDetail = (props: ArticleProps): ReactElement => {
             <div className="g-col g-col-18 m-col-24 print-col-24 animated no-ani">
               <article className="article">
                 <h1 className="title">{props.articleTitle}</h1>
-                <div className="content" dangerouslySetInnerHTML={{ __html: html }}></div>
+                <MdEditor
+                  modelValue={props.articleContent}
+                  editorClass="content"
+                  theme={config.themeName}
+                  editorId="could-edit"
+                  previewOnly
+                  onGetCatalog={setHeads}
+                />
               </article>
             </div>
 
@@ -140,7 +117,7 @@ const ArticleDetail = (props: ArticleProps): ReactElement => {
               style={{ visibility: 'hidden' }}
             >
               <Card margin="10px 7.5px" title="目录" bordered={false}>
-                <Topicfy heads={headstemp} />
+                <Topicfy heads={heads} />
               </Card>
               <div className={styles['item-spi']}>
                 <Tooltip placement="bottom" title="勾选背景图形才显示打印样式！">
