@@ -6,6 +6,7 @@ const withLess = require('@zeit/next-less');
 const withCss = require('@zeit/next-css');
 const withSass = require('@zeit/next-sass');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const cssLoaderGetLocalIdent = require('css-loader/lib/getLocalIdent.js');
 
 // 环境
 const isDev = process.env.NODE_ENV === 'development';
@@ -56,7 +57,14 @@ module.exports = withPlugins([withCss, withLess, withSass], {
   cssModules: true,
   cssLoaderOptions: {
     importLoaders: 1,
-    localIdentName: isDev ? '[local]___[hash:base64:5]' : '[hash:base64:13]'
+    localIdentName: isDev ? '[local]___[hash:base64:5]' : '[hash:base64:13]',
+    getLocalIdent: (context, localIdentName, localName, options) => {
+      const hz = context.resourcePath.replace(context.rootContext, '');
+      if (/node_modules/.test(hz)) {
+        return localName;
+      }
+      return cssLoaderGetLocalIdent(context, localIdentName, localName, options);
+    }
   },
   lessLoaderOptions: {
     javascriptEnabled: true,
