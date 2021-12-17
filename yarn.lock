@@ -4042,10 +4042,10 @@ map-visit@^1.0.0:
   dependencies:
     object-visit "^1.0.0"
 
-md-editor-rt@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.npmmirror.com/md-editor-rt/download/md-editor-rt-1.2.1.tgz#a3114e788352dc2af8fea4d83046b33b4fdb9ba3"
-  integrity sha512-Gvn7GajBJoEYwWBV0x2kDnX1VXgZDb36qe42z+h/NCzavFthTpGsqd/NK3D3pP/F1V8VlZZvhnoTphlZfZ0R9g==
+md-editor-rt@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.npmmirror.com/md-editor-rt/download/md-editor-rt-1.3.0.tgz#e3320c06687c7b9a8302efb6739bb42a01b2a27c"
+  integrity sha512-0jEEdVuLHxWcUbbvhOT6uP4mVWV48TEF9IFqzvyM9zHUVnBd9BttRWrGXVmq6qS1KeL2ruf4BGCp358hNvoNhA==
 
 md5.js@^1.3.4:
   version "1.3.5"
