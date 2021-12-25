@@ -1,4 +1,4 @@
-import { ReactElement, useEffect, useLayoutEffect, useState } from 'react';
+import { ReactElement, useEffect, useState } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { Button, Tooltip } from 'antd';
@@ -76,7 +76,7 @@ const ArticleDetail = (props: ArticleProps): ReactElement => {
     ml.style = '';
   }, []);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     setTimeout(() => {
       mediumZoom(document.querySelectorAll('.content img'), {
         background: config.themeName === 'dark' ? '#000' : '#fff'
