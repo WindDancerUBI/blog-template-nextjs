@@ -17,7 +17,7 @@ const About = (): ReactElement => {
             别的内容xxxxxx
           </a>
           <Divider type="vertical" />
-          <Tooltip title="请邮件zbfcqtl@163.com，谢谢！">
+          <Tooltip title="请邮件zbfcqtl@gmail.com，谢谢！">
             <a>联系我</a>
           </Tooltip>
         </div>

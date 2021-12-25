@@ -42,7 +42,7 @@ const About = (): ReactElement => {
       </Block>
       <Block title="联系方式" id="contact" className="animated no-ani">
         <>
-          <p className={styles['description']}>邮箱：zbfcqtl@163.com</p>
+          <p className={styles['description']}>邮箱：zbfcqtl@gmail.com</p>
           <p className={styles['description']}>
             GitHub：
             <a href="https://github.com/imzbf" target="_blank">
